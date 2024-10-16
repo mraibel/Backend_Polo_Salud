@@ -1,5 +1,7 @@
 package sdp.api.model;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -51,6 +53,9 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserRol> roles;
 
     
 

@@ -24,4 +24,10 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/{userId}/roles/{rolId}")
+    public ResponseEntity<String> assignRole(@PathVariable Integer userId, @PathVariable Integer rolId) {
+        userService.asignarRol(userId, rolId);
+        return ResponseEntity.ok("El rol ha sido asignado correctamente.");
+    }
 }
