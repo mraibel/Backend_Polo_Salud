@@ -17,6 +17,8 @@ public class User {
 
     /* CREAR RELACIONES */
 
+    
+
     public User() {
 
     }
