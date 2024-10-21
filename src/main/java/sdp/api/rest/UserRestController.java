@@ -2,6 +2,8 @@ package sdp.api.rest;
 
 import sdp.api.model.UserDTO;
 import sdp.api.service.UserService;
+
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +27,9 @@ public class UserRestController {
         }
     }
 
-    @GetMapping("/{userId}/roles/{rolId}")
-    public ResponseEntity<String> assignRole(@PathVariable Integer userId, @PathVariable Integer rolId) {
-        userService.asignarRol(userId, rolId);
+    @PutMapping("/rol/{idUser}/{idRol}")
+    public ResponseEntity<String> assignRole(@PathVariable Integer idUser, @PathVariable Integer idRol) {
+        userService.asignarRol(idUser, idRol);
         return ResponseEntity.ok("El rol ha sido asignado correctamente.");
     }
 }

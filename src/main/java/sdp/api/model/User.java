@@ -1,11 +1,13 @@
 package sdp.api.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user", nullable = false)
@@ -16,8 +18,14 @@ public class User {
     private String email;
     private String password;
 
-
     /* CREAR RELACIONES */
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+        name = "userrol",
+        joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"),
+        inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    )
+    private List<Rol> roles;
 
     public User() {
 
@@ -54,9 +62,10 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UserRol> roles;
-
-    
-
+    public List<Rol> getRoles() {
+        return this.roles;
+    }
+    public void addRol(Rol rol) {
+        this.roles.add(rol);
+    }
 }

@@ -1,20 +1,15 @@
 package sdp.api.model;
 
-import java.util.Set;
+import java.util.List;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.ManyToMany;
 
 @Entity
-@Table(name = "rol")
 public class Rol {
     
     @Id
@@ -23,6 +18,9 @@ public class Rol {
     private Integer id_rol;
 
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    List<User> users;
 
     public Integer getId_rol() {
         return id_rol;
@@ -36,7 +34,4 @@ public class Rol {
     public void setName(String name) {
         this.name = name;
     }
-
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UserRol> users;
 }
