@@ -3,7 +3,6 @@ package sdp.api.rest;
 import sdp.api.model.UserDTO;
 import sdp.api.service.UserService;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
