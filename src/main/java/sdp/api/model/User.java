@@ -1,5 +1,7 @@
 package sdp.api.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,11 +16,15 @@ public class User {
     private String email;
     private String password;
 
-
     /* CREAR RELACIONES */
-
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+        name = "saved_news",
+        joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"),
+        inverseJoinColumns = @JoinColumn(name = "id_new", referencedColumnName = "id_new")
+    )
+    private List<New> savedNews;
     
-
     public User() {
 
     }

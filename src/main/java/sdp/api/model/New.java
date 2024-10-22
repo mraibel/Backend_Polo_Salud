@@ -1,6 +1,7 @@
 package sdp.api.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -18,9 +19,8 @@ public class New {
     private Date date;
 
     /* Relaciones */
-
-
-
+    @ManyToMany(mappedBy = "savedNews")
+    private List<User> users;
 
     /* Gets and Setters */
     public Integer getId_new() {
