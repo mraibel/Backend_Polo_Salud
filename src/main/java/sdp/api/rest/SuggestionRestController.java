@@ -24,7 +24,7 @@ public class SuggestionRestController{
     }
     @GetMapping("/{suggestionId}")
     public ResponseEntity<SuggestionDTO> getSuggestion(@PathVariable Integer suggestionId) {
-        SuggestionDTO suggestionDTO = suggestionService.findSuggestion(suggestionId);
+        SuggestionDTO suggestionDTO = suggestionService.findSuggestionById(suggestionId);
         if (suggestionDTO != null) {
             return new ResponseEntity<>(suggestionDTO, HttpStatus.OK);
         } else {
