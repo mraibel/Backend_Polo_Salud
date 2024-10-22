@@ -26,6 +26,10 @@ public class User {
     )
     private List<Rol> roles;
 
+    //Relacion con Suggestion
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Suggestion> suggestions;
+
     public User() {
 
     }

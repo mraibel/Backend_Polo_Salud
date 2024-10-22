@@ -24,12 +24,12 @@ public class SuggestionService { // Este servicio se encarga de manejar las suge
     }
 
     public SuggestionDTO findSuggestionById(Integer suggestionId) {
-        Suggestion suggestion = suggestionRepository.findById(suggestionId).orElseThrow(() -> new RuntimeException("Suggestion not found with id " + suggestionId));
+        Suggestion suggestion = suggestionRepository.findById(suggestionId).orElseThrow(() -> new RuntimeException("Sugerencia no encontrada con la id " + suggestionId));
         return mapper.suggestionToSuggestionDto(suggestion);
     }
 
     public void deleteSuggestion(Integer suggestionId) {
-        Suggestion suggestion = suggestionRepository.findById(suggestionId).orElseThrow(() -> new RuntimeException("Suggestion not found with id " + suggestionId));
+        Suggestion suggestion = suggestionRepository.findById(suggestionId).orElseThrow(() -> new RuntimeException("Sugerencia no encontrada con la id  " + suggestionId));
         suggestionRepository.delete(suggestion);
     }
 }
