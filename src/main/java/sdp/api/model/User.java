@@ -30,6 +30,10 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Suggestion> suggestions;
 
+    //Relacion con course
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Course> courses;
+
     public User() {
 
     }
